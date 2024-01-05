@@ -1,12 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import db from '@/app/backend/elephant';
-import request from '@/app/backend/elephant';
 
 export default function Home() {
-  const time = request();
-  console.log(time);
-
   return (
     <main className={styles.main}>
       <div className={styles.description}>
