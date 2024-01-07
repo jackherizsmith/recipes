@@ -1,6 +1,0 @@
-query thing {
-  ingredients {
-    ingredient
-    unit
-  }
-}

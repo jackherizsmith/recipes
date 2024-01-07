@@ -1,12 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import { graphql } from '../backend/graphql/gql';
 
-export default function Home() {
-  (async () => {
-    const thing = await graphql().thing();
-    console.log(thing);
-  })();
+export default async function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
