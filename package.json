@@ -6,12 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "graphql:codegen": "graphql codegen",
-    "graphql:coverage": "graphql coverage",
-    "graphql:validate": "graphql validate",
-    "graphql:diff": "graphql diff",
-    "graphql:similar": "graphql similar"
+    "lint": "next lint"
   },
   "dependencies": {
     "client-only": "^0.0.1",
