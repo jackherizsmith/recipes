@@ -1,7 +1,18 @@
-type Client = {}
+import { GraphQLClient } from 'graphql-request';
+import crossFetch from 'cross-fetch';
+import fetchRetry from 'fetch-retry';
+import { Sdk, getSdk } from './generated/graphql';
 
-const createClient = ({}: {endpoint: string,headers: Record<string, string>}): Client => {
-  return {}
+function GraphQL(uri: string, secret?: string) {
+  const fetchImpl = global.fetch || crossFetch;
+  const client = new GraphQLClient(uri, {
+    headers: {
+      'x-hasura-admin-secret': secret || '',
+    },
+    keepalive: true,
+    fetch: fetchRetry(fetchImpl, { retries: 3, retryDelay: 1000, retryOn: [503, 429] }),
+  });
+  return getSdk(client);
 }
 
 type HasuraConfig = {
@@ -20,14 +31,11 @@ export const hasuraConfig = (): HasuraConfig => {
   return hasuraConfigCache;
 };
 
-let client: Client | null = null;
+let client: Sdk | null = null;
 
-export const graphql = (): Client => {
+export const graphql = (): Sdk => {
   if (!client) {
-    client = createClient({
-      endpoint: hasuraConfig().HASURA_URL,
-      headers: { 'x-hasura-admin-secret': hasuraConfig().HASURA_ADMIN_SECRET },
-    });
+    client = GraphQL(hasuraConfig().HASURA_URL, hasuraConfig().HASURA_ADMIN_SECRET);
   }
   return client;
 };
