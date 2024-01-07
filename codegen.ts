@@ -24,6 +24,9 @@ const config: CodegenConfig = {
           numeric: 'number',
         },
         enumsAsTypes: true,
+        hooks: {
+          afterOneFileWrite: ['gsed -i -e"s|graphql-request/dist/types.dom|graphql-request/src/types.dom|g"'],
+        },
       },
     },
     'backend/graphql/generated/graphql.schema.json': {
