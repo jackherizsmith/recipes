@@ -1,14 +1,11 @@
-import { Sdk } from '../../generated/graphql';
-import GraphQL from './GraphQL';
-
-export * from '../../generated/graphql';
+import { createClient, Client } from 'graphqurl';
 
 type HasuraConfig = {
   HASURA_URL: string;
   HASURA_ADMIN_SECRET: string;
 };
-
 let hasuraConfigCache: HasuraConfig;
+
 export const hasuraConfig = (): HasuraConfig => {
   if (!hasuraConfigCache) {
     hasuraConfigCache = {
@@ -19,11 +16,14 @@ export const hasuraConfig = (): HasuraConfig => {
   return hasuraConfigCache;
 };
 
-let graphqlClient: Sdk | null = null;
+let client: Client | null = null;
 
-export const graphql = (): Sdk => {
-  if (!graphqlClient) {
-    graphqlClient = GraphQL(hasuraConfig().HASURA_URL, hasuraConfig().HASURA_ADMIN_SECRET);
+export const graphql = (): Client => {
+  if (!client) {
+    client = createClient({
+      endpoint: hasuraConfig().HASURA_URL,
+      headers: { 'x-hasura-admin-secret': hasuraConfig().HASURA_ADMIN_SECRET },
+    });
   }
-  return graphqlClient;
+  return client;
 };

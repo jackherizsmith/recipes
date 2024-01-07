@@ -1,5 +1,5 @@
-query hello {
-  recipes {
-    id
+query thing {
+  ingredients {
+    ingredient
   }
 }
