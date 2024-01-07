@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import { graphql } from '../backend/graphql/gql';
 
 export default function Home() {
   (async () => {})();

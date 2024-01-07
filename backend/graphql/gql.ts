@@ -1,4 +1,8 @@
-import { createClient, Client } from 'graphqurl';
+type Client = {}
+
+const createClient = ({}: {endpoint: string,headers: Record<string, string>}): Client => {
+  return {}
+}
 
 type HasuraConfig = {
   HASURA_URL: string;
