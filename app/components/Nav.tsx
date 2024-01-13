@@ -1,24 +1,22 @@
-import { graphql } from '@/graphql/gql';
 import Link from 'next/link';
+import styles from './Nav.module.css';
 
 const NAV_ITEMS = [
   { title: 'home', url: '/' },
-  { title: 'add recipe', url: '/add-recipe' },
-  { title: 'view recipes', url: '/view-recipes' },
-  { title: 'create order', url: '/create-order' },
+  { title: 'add recipe', url: '/recipes/add' },
+  { title: 'view recipes', url: '/recipes' },
+  { title: 'create order', url: '/orders/add' },
+  { title: 'view orders', url: '/orders' },
 ];
 
 export default async function Nav() {
-  const thing = await graphql().thing();
-  console.log(thing);
   return (
-    <nav>
+    <nav className={styles.nav}>
       {NAV_ITEMS.map(({ url, title }) => (
         <Link href={url} key={url}>
           {title}
         </Link>
       ))}
-      {thing.ingredients[0].ingredient}
     </nav>
   );
 }

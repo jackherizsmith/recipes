@@ -1,6 +1,7 @@
-query thing {
-  ingredients {
-    ingredient
-    unit
+query recipes_count {
+  recipes_aggregate {
+    aggregate {
+      count
+    }
   }
 }
