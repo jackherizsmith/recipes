@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate": "rm -rf backend/graphql/generated/ && mkdir backend/graphql/generated && graphql-codegen --require dotenv/config --config ./codegen.ts dotenv_config_path=./.env.local",
+    "generate": "rm -rf graphql/generated/ && mkdir graphql/generated && graphql-codegen --require dotenv/config --config ./codegen.ts dotenv_config_path=./.env.local",
     "prettier:fix": "yarn prettier --write ./**/*.{graphql,js,ts,tsx}"
   },
   "dependencies": {
@@ -35,7 +35,6 @@
     "eslint-config-next": "14.0.4",
     "prettier": "^3.1.1",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "styled-components": "^6.1.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

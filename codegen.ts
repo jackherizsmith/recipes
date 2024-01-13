@@ -13,9 +13,9 @@ const config: CodegenConfig = {
       },
     },
   ],
-  documents: 'backend/graphql/*.graphql',
+  documents: 'graphql/*.graphql',
   generates: {
-    'backend/graphql/generated/graphql.ts': {
+    'graphql/generated/graphql.ts': {
       plugins: ['typescript', 'typescript-operations', 'typescript-graphql-request'],
       config: {
         avoidOptionals: { field: true },
@@ -29,10 +29,10 @@ const config: CodegenConfig = {
         },
       },
     },
-    'backend/graphql/generated/graphql.schema.json': {
+    'graphql/generated/graphql.schema.json': {
       plugins: ['introspection'],
     },
-    'backend/graphql/generated/schema.graphql': {
+    'graphql/generated/schema.graphql': {
       plugins: ['schema-ast'],
     },
   },

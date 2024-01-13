@@ -29,7 +29,7 @@ yarn-error.log*
 .env*.local
 
 # dev
-backend/graphql/generated
+graphql/generated
 
 # vercel
 .vercel

@@ -22,13 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".graphqlrc.js",
-    "backend/graphql/GraphQL.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".graphqlrc.js", "graphql/GraphQL.ts"],
   "exclude": ["node_modules"]
 }
